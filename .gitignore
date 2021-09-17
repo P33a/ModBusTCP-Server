@@ -38,3 +38,4 @@ local SubFolders
 *.test/
 *.zip
 *.7z
+*.txt
