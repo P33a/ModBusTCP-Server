@@ -2,10 +2,10 @@ object FModBus: TFModBus
   Left = 1198
   Height = 673
   Top = 118
-  Width = 283
+  Width = 327
   Caption = 'ModBus'
   ClientHeight = 673
-  ClientWidth = 283
+  ClientWidth = 327
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -36,10 +36,10 @@ object FModBus: TFModBus
     Shape = stCircle
   end
   object BModBusListen: TButton
-    Left = 196
+    Left = 184
     Height = 21
-    Top = 4
-    Width = 69
+    Top = 8
+    Width = 64
     Caption = 'Listen'
     OnClick = BModBusListenClick
     TabOrder = 1
@@ -61,16 +61,16 @@ object FModBus: TFModBus
     ParentColor = False
   end
   object BModBusDisconnect: TButton
-    Left = 196
+    Left = 252
     Height = 21
-    Top = 28
+    Top = 8
     Width = 69
     Caption = 'Disconnect'
     OnClick = BModBusDisconnectClick
     TabOrder = 2
   end
   object BModbusOffsetSet: TButton
-    Left = 196
+    Left = 276
     Height = 21
     Top = 52
     Width = 45
@@ -129,10 +129,10 @@ object FModBus: TFModBus
     TabOrder = 7
   end
   object ProgressBarModBus: TProgressBar
-    Left = 196
+    Left = 184
     Height = 13
-    Top = 76
-    Width = 69
+    Top = 32
+    Width = 137
     Smooth = True
     TabOrder = 8
   end
@@ -280,14 +280,14 @@ object FModBus: TFModBus
   end
   object MemoModBus: TMemo
     Left = 8
-    Height = 149
+    Height = 141
     Top = 488
-    Width = 269
+    Width = 169
     TabOrder = 9
     WordWrap = False
   end
   object BModbusTest: TButton
-    Left = 188
+    Left = 232
     Height = 25
     Top = 640
     Width = 87
@@ -756,6 +756,51 @@ object FModBus: TFModBus
     Caption = 'Bit 0'
     ParentColor = False
     OnDblClick = LabelOutBitDblClick
+  end
+  object SGRegisters: TStringGrid
+    Left = 196
+    Height = 527
+    Top = 101
+    Width = 125
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    ColCount = 2
+    DefaultRowHeight = 16
+    FixedCols = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+    RowCount = 32
+    ScrollBars = ssNone
+    TabOrder = 11
+    ColWidths = (
+      60
+      61
+    )
+    Cells = (
+      2
+      0
+      0
+      'Addr'
+      1
+      0
+      'Value'
+    )
+  end
+  object Label61: TLabel
+    Left = 192
+    Height = 15
+    Top = 56
+    Width = 35
+    Caption = 'Offset:'
+    ParentColor = False
+  end
+  object EditModBusRegisterOffset: TEdit
+    Left = 232
+    Height = 21
+    Top = 52
+    Width = 33
+    AutoSize = False
+    TabOrder = 12
+    Text = '0'
   end
   object TCPModBus: TLTCPComponent
     Port = 5502

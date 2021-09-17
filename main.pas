@@ -154,14 +154,15 @@ end;
 
 procedure TFMain.FormShow(Sender: TObject);
 begin
-  FmodBus.show();
-  FConfig.Show();
+  FModBus.ModbusData.setHoldingRegister(0, 23);
+  FModBus.ModbusData.setHoldingRegister(1, 256);
+
   go := FConfig.UserPars.CreatePar('Go', 0);
   ready := FConfig.UserPars.CreatePar('Ready', 1);
   FConfig.UserPars.CreatePar('P3', 3);
 
-  FModBus.ModbusData.setHoldingRegister(0, 23);
-  FModBus.ModbusData.setHoldingRegister(1, 256);
+  FmodBus.show();
+  FConfig.Show();
 end;
 
 procedure TFMain.PaintBoxMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);

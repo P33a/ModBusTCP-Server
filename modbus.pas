@@ -53,6 +53,7 @@ type
     CBModBusOutputOverride: TCheckBox;
     EditModBusInputOffset: TEdit;
     EditModBusOutputOffset: TEdit;
+    EditModBusRegisterOffset: TEdit;
     EditModBusPort: TEdit;
     IniPropStorage: TIniPropStorage;
     Label56: TLabel;
@@ -60,6 +61,7 @@ type
     Label58: TLabel;
     Label59: TLabel;
     Label60: TLabel;
+    Label61: TLabel;
     LabelInBit0: TLabel;
     LabelInBit1: TLabel;
     LabelInBit10: TLabel;
@@ -94,6 +96,7 @@ type
     LabelOutBit9: TLabel;
     MemoModBus: TMemo;
     ProgressBarModBus: TProgressBar;
+    SGRegisters: TStringGrid;
     ShapeInput0: TShape;
     ShapeInput1: TShape;
     ShapeInput10: TShape;
@@ -157,12 +160,13 @@ type
     ModBusDisconnected, ModBusWantsToDisconnected: boolean;
     ModBusInLEDs, ModBusOutLEDs: array[0..15] of TShape;
     ModBusInLabels, ModBusOutLabels: array[0..15] of TLabel;
-    ModBusInputsOffset, ModBusOutputsOffset: integer;
+    ModBusInputsOffset, ModBusOutputsOffset, ModBusRegistersOffset: integer;
 
     InputLabels: array[0..ModBusBits - 1] of string;
     CoilLabels: array[0..ModBusBits - 1] of string;
 
     procedure ModbusRefreshLEDs;
+    procedure ModbusRefreshRegisters;
   end;
 
 var
@@ -243,7 +247,8 @@ begin
 
   ModbusData.SetInput(index, not ModbusData.getInput(index));
 
-  ModbusRefreshLEDs;
+  ModbusRefreshLEDs();
+  ModbusRefreshRegisters();
 end;
 
 procedure TFModBus.ShapeOutputMouseDown(Sender: TObject; Button: TMouseButton;
@@ -258,7 +263,8 @@ begin
 
   ModbusData.SetCoil(index, not ModbusData.getCoil(index));
 
-  ModbusRefreshLEDs;
+  ModbusRefreshLEDs();
+  ModbusRefreshRegisters();
 end;
 
 procedure TFModBus.TCPModBusAccept(aSocket: TLSocket);
@@ -294,10 +300,12 @@ begin
     TCPModBus.SendMessage(ModBusServer.response);
     ModBusServer.response := '';
     ModbusRefreshLEDs();
+    ModbusRefreshRegisters();
   end;
 
   if ModBusServer.Frame.FunctionCode = $0F then begin
     ModbusRefreshLEDs();
+    ModbusRefreshRegisters();
   end;
 
   {s := '';
@@ -332,7 +340,13 @@ begin
     end;
   end;
 
-  ModbusRefreshLEDs;
+  ModBusRegistersOffset := strtointdef(EditModBusRegisterOffset.Text, 0);
+  for i := 0 to SGRegisters.RowCount - 2 do begin
+    SGRegisters.Cells[0, i + 1] := IntToStr(i + ModBusRegistersOffset);
+  end;
+
+  ModbusRefreshLEDs();
+  ModbusRefreshRegisters();
 end;
 
 procedure TFModBus.FormCreate(Sender: TObject);
@@ -377,6 +391,15 @@ begin
   end;
   for i := low(ModBusOutLEDs) to high(ModBusOutLEDs) do begin
     ModBusOutLEDs[i].Brush.Color := OnOffColors[ModbusData.getCoil(i + ModBusOutputsOffset)];
+  end;
+end;
+
+
+procedure TFModBus.ModbusRefreshRegisters;
+var i: integer;
+begin
+  for i := 0 to SGRegisters.RowCount - 2 do begin
+    SGRegisters.Cells[1, i + 1] := IntToStr(ModbusData.getHoldingRegister(i + ModBusRegistersOffset));
   end;
 end;
 
