@@ -1,0 +1,64 @@
+object FMain: TFMain
+  Left = 346
+  Height = 515
+  Top = 179
+  Width = 743
+  Caption = 'PCModBusTCPServer'
+  ClientHeight = 515
+  ClientWidth = 743
+  Color = clWhite
+  OnCreate = FormCreate
+  OnShow = FormShow
+  SessionProperties = 'Top;Left'
+  LCLVersion = '2.1.0.0'
+  object PaintBox: TPaintBox
+    Left = 0
+    Height = 480
+    Top = 0
+    Width = 640
+    OnMouseMove = PaintBoxMouseMove
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 492
+    Width = 743
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -16
+    Font.Pitch = fpVariable
+    Font.Quality = fqCleartype
+    Panels = <>
+    ParentFont = False
+  end
+  object BShowConfig: TButton
+    Left = 648
+    Height = 25
+    Top = 12
+    Width = 75
+    Caption = 'Show Config'
+    OnClick = BShowConfigClick
+    TabOrder = 1
+  end
+  object BShowIO: TButton
+    Left = 648
+    Height = 25
+    Top = 40
+    Width = 75
+    Caption = 'Show I/O'
+    OnClick = BShowIOClick
+    TabOrder = 2
+  end
+  object Timer: TTimer
+    Interval = 33
+    OnTimer = TimerTimer
+    Left = 553
+    Top = 193
+  end
+  object IniPropStorage: TIniPropStorage
+    StoredValues = <>
+    IniFileName = 'config.ini'
+    IniSection = 'Main'
+    Left = 676
+    Top = 197
+  end
+end

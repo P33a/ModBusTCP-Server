@@ -1,0 +1,81 @@
+object FConfig: TFConfig
+  Left = 390
+  Height = 566
+  Top = 173
+  Width = 619
+  Caption = 'Config'
+  ClientHeight = 566
+  ClientWidth = 619
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  SessionProperties = 'Height;Width;Top;Left'
+  LCLVersion = '2.1.0.0'
+  object PageControl: TPageControl
+    Left = 0
+    Height = 526
+    Top = 40
+    Width = 619
+    ActivePage = TabParams
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 0
+    object TabParams: TTabSheet
+      Caption = 'Params'
+      ClientHeight = 498
+      ClientWidth = 611
+      object SGPars: TStringGrid
+        Left = 0
+        Height = 498
+        Top = 4
+        Width = 252
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFillColumns = True
+        ColCount = 3
+        DefaultRowHeight = 16
+        FixedCols = 0
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+        RowCount = 33
+        ScrollBars = ssVertical
+        TabOrder = 0
+        OnGetEditText = SGParsGetEditText
+        OnPrepareCanvas = SGParsPrepareCanvas
+        OnValidateEntry = SGParsValidateEntry
+        ColWidths = (
+          77
+          77
+          77
+        )
+        Cells = (
+          6
+          0
+          0
+          'Name'
+          0
+          1
+          'Kp'
+          0
+          2
+          'Ki'
+          0
+          3
+          'Kd'
+          1
+          0
+          'Value'
+          2
+          0
+          'Set'
+        )
+      end
+    end
+  end
+  object IniPropStorage: TIniPropStorage
+    StoredValues = <>
+    IniFileName = 'config.ini'
+    IniSection = 'Config'
+    Left = 380
+    Top = 41
+  end
+end

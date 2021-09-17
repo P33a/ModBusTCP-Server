@@ -1,0 +1,780 @@
+object FModBus: TFModBus
+  Left = 1198
+  Height = 673
+  Top = 118
+  Width = 283
+  Caption = 'ModBus'
+  ClientHeight = 673
+  ClientWidth = 283
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  SessionProperties = 'CBModBusInputOverride.Checked;CBModBusOutputOverride.Checked;EditModBusInputOffset.Text;EditModBusOutputOffset.Text;EditModBusPort.Text;Height;Left;Top;Width'
+  LCLVersion = '2.1.0.0'
+  object Label56: TLabel
+    Left = 8
+    Height = 15
+    Top = 12
+    Width = 72
+    Caption = 'Modbus Port:'
+    ParentColor = False
+  end
+  object EditModBusPort: TEdit
+    Left = 80
+    Height = 21
+    Top = 8
+    Width = 57
+    AutoSize = False
+    TabOrder = 0
+    Text = '5502'
+  end
+  object ShapeModBusState: TShape
+    Left = 144
+    Height = 21
+    Top = 8
+    Width = 21
+    Shape = stCircle
+  end
+  object BModBusListen: TButton
+    Left = 196
+    Height = 21
+    Top = 4
+    Width = 69
+    Caption = 'Listen'
+    OnClick = BModBusListenClick
+    TabOrder = 1
+  end
+  object Label57: TLabel
+    Left = 8
+    Height = 15
+    Top = 36
+    Width = 36
+    Caption = 'Inputs:'
+    ParentColor = False
+  end
+  object Label58: TLabel
+    Left = 100
+    Height = 15
+    Top = 36
+    Width = 29
+    Caption = 'Coils:'
+    ParentColor = False
+  end
+  object BModBusDisconnect: TButton
+    Left = 196
+    Height = 21
+    Top = 28
+    Width = 69
+    Caption = 'Disconnect'
+    OnClick = BModBusDisconnectClick
+    TabOrder = 2
+  end
+  object BModbusOffsetSet: TButton
+    Left = 196
+    Height = 21
+    Top = 52
+    Width = 45
+    Caption = 'Set'
+    OnClick = BModbusOffsetSetClick
+    TabOrder = 3
+  end
+  object EditModBusOutputOffset: TEdit
+    Left = 140
+    Height = 21
+    Top = 52
+    Width = 33
+    AutoSize = False
+    TabOrder = 4
+    Text = '0'
+  end
+  object Label60: TLabel
+    Left = 100
+    Height = 15
+    Top = 56
+    Width = 35
+    Caption = 'Offset:'
+    ParentColor = False
+  end
+  object EditModBusInputOffset: TEdit
+    Left = 48
+    Height = 21
+    Top = 52
+    Width = 33
+    AutoSize = False
+    TabOrder = 5
+    Text = '0'
+  end
+  object Label59: TLabel
+    Left = 8
+    Height = 15
+    Top = 56
+    Width = 35
+    Caption = 'Offset:'
+    ParentColor = False
+  end
+  object CBModBusInputOverride: TCheckBox
+    Left = 16
+    Height = 19
+    Top = 76
+    Width = 65
+    Caption = 'Override'
+    TabOrder = 6
+  end
+  object CBModBusOutputOverride: TCheckBox
+    Left = 112
+    Height = 19
+    Top = 76
+    Width = 65
+    Caption = 'Override'
+    TabOrder = 7
+  end
+  object ProgressBarModBus: TProgressBar
+    Left = 196
+    Height = 13
+    Top = 76
+    Width = 69
+    Smooth = True
+    TabOrder = 8
+  end
+  object ShapeInput0: TShape
+    Left = 12
+    Height = 21
+    Top = 101
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput0: TShape
+    Left = 108
+    Height = 21
+    Top = 101
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput1: TShape
+    Tag = 1
+    Left = 12
+    Height = 21
+    Top = 125
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput1: TShape
+    Tag = 1
+    Left = 108
+    Height = 21
+    Top = 125
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput2: TShape
+    Tag = 2
+    Left = 12
+    Height = 21
+    Top = 149
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput2: TShape
+    Tag = 2
+    Left = 108
+    Height = 21
+    Top = 149
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput3: TShape
+    Tag = 3
+    Left = 12
+    Height = 21
+    Top = 173
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput3: TShape
+    Tag = 3
+    Left = 108
+    Height = 21
+    Top = 173
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput4: TShape
+    Tag = 4
+    Left = 12
+    Height = 21
+    Top = 197
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput4: TShape
+    Tag = 4
+    Left = 108
+    Height = 21
+    Top = 197
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput5: TShape
+    Tag = 5
+    Left = 12
+    Height = 21
+    Top = 221
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput5: TShape
+    Tag = 5
+    Left = 108
+    Height = 21
+    Top = 221
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput6: TShape
+    Tag = 6
+    Left = 12
+    Height = 21
+    Top = 245
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput6: TShape
+    Tag = 6
+    Left = 108
+    Height = 21
+    Top = 245
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput7: TShape
+    Tag = 7
+    Left = 12
+    Height = 21
+    Top = 269
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput7: TShape
+    Tag = 7
+    Left = 108
+    Height = 21
+    Top = 269
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object MemoModBus: TMemo
+    Left = 8
+    Height = 149
+    Top = 488
+    Width = 269
+    TabOrder = 9
+    WordWrap = False
+  end
+  object BModbusTest: TButton
+    Left = 188
+    Height = 25
+    Top = 640
+    Width = 87
+    Caption = 'Modbus Test'
+    TabOrder = 10
+    Visible = False
+  end
+  object LabelInBit0: TLabel
+    Left = 36
+    Height = 15
+    Top = 104
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit0: TLabel
+    Left = 132
+    Height = 15
+    Top = 104
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit1: TLabel
+    Tag = 1
+    Left = 36
+    Height = 15
+    Top = 128
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit1: TLabel
+    Tag = 1
+    Left = 132
+    Height = 15
+    Top = 128
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit2: TLabel
+    Tag = 2
+    Left = 36
+    Height = 15
+    Top = 152
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit2: TLabel
+    Tag = 2
+    Left = 132
+    Height = 15
+    Top = 152
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit3: TLabel
+    Tag = 3
+    Left = 36
+    Height = 15
+    Top = 176
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit3: TLabel
+    Tag = 3
+    Left = 132
+    Height = 15
+    Top = 176
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit4: TLabel
+    Tag = 4
+    Left = 36
+    Height = 15
+    Top = 200
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit4: TLabel
+    Tag = 4
+    Left = 132
+    Height = 15
+    Top = 200
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit5: TLabel
+    Tag = 5
+    Left = 36
+    Height = 15
+    Top = 224
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit5: TLabel
+    Tag = 5
+    Left = 132
+    Height = 15
+    Top = 224
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit6: TLabel
+    Tag = 6
+    Left = 36
+    Height = 15
+    Top = 248
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit6: TLabel
+    Tag = 6
+    Left = 132
+    Height = 15
+    Top = 248
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit7: TLabel
+    Tag = 7
+    Left = 36
+    Height = 15
+    Top = 272
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit7: TLabel
+    Tag = 7
+    Left = 132
+    Height = 15
+    Top = 272
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object ShapeInput8: TShape
+    Tag = 8
+    Left = 12
+    Height = 21
+    Top = 292
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput8: TShape
+    Tag = 8
+    Left = 108
+    Height = 21
+    Top = 292
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput9: TShape
+    Tag = 9
+    Left = 12
+    Height = 21
+    Top = 316
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput9: TShape
+    Tag = 9
+    Left = 108
+    Height = 21
+    Top = 316
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput10: TShape
+    Tag = 10
+    Left = 12
+    Height = 21
+    Top = 340
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput10: TShape
+    Tag = 10
+    Left = 108
+    Height = 21
+    Top = 340
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput11: TShape
+    Tag = 11
+    Left = 12
+    Height = 21
+    Top = 364
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput11: TShape
+    Tag = 11
+    Left = 108
+    Height = 21
+    Top = 364
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput12: TShape
+    Tag = 12
+    Left = 12
+    Height = 21
+    Top = 388
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput12: TShape
+    Tag = 12
+    Left = 108
+    Height = 21
+    Top = 388
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput13: TShape
+    Tag = 13
+    Left = 12
+    Height = 21
+    Top = 412
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput13: TShape
+    Tag = 13
+    Left = 108
+    Height = 21
+    Top = 412
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput14: TShape
+    Tag = 14
+    Left = 12
+    Height = 21
+    Top = 436
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput14: TShape
+    Tag = 14
+    Left = 108
+    Height = 21
+    Top = 436
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object ShapeInput15: TShape
+    Tag = 15
+    Left = 12
+    Height = 21
+    Top = 460
+    Width = 21
+    OnMouseDown = ShapeInputMouseDown
+    Shape = stCircle
+  end
+  object ShapeOutput15: TShape
+    Tag = 15
+    Left = 108
+    Height = 21
+    Top = 460
+    Width = 21
+    OnMouseDown = ShapeOutputMouseDown
+    Shape = stCircle
+  end
+  object LabelInBit8: TLabel
+    Tag = 8
+    Left = 36
+    Height = 15
+    Top = 295
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit8: TLabel
+    Tag = 8
+    Left = 132
+    Height = 15
+    Top = 295
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit9: TLabel
+    Tag = 9
+    Left = 36
+    Height = 15
+    Top = 319
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit9: TLabel
+    Tag = 9
+    Left = 132
+    Height = 15
+    Top = 319
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit10: TLabel
+    Tag = 10
+    Left = 36
+    Height = 15
+    Top = 343
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit10: TLabel
+    Tag = 10
+    Left = 132
+    Height = 15
+    Top = 343
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit11: TLabel
+    Tag = 11
+    Left = 36
+    Height = 15
+    Top = 367
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit11: TLabel
+    Tag = 11
+    Left = 132
+    Height = 15
+    Top = 367
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit12: TLabel
+    Tag = 12
+    Left = 36
+    Height = 15
+    Top = 391
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit12: TLabel
+    Tag = 12
+    Left = 132
+    Height = 15
+    Top = 391
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit13: TLabel
+    Tag = 13
+    Left = 36
+    Height = 15
+    Top = 415
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit13: TLabel
+    Tag = 13
+    Left = 132
+    Height = 15
+    Top = 415
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit14: TLabel
+    Tag = 14
+    Left = 36
+    Height = 15
+    Top = 439
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit14: TLabel
+    Tag = 14
+    Left = 132
+    Height = 15
+    Top = 439
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object LabelInBit15: TLabel
+    Tag = 15
+    Left = 36
+    Height = 15
+    Top = 463
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelInBitDblClick
+  end
+  object LabelOutBit15: TLabel
+    Tag = 15
+    Left = 132
+    Height = 15
+    Top = 463
+    Width = 23
+    Caption = 'Bit 0'
+    ParentColor = False
+    OnDblClick = LabelOutBitDblClick
+  end
+  object TCPModBus: TLTCPComponent
+    Port = 5502
+    OnReceive = TCPModBusReceive
+    OnError = TCPModBusError
+    OnDisconnect = TCPModBusDisconnect
+    OnAccept = TCPModBusAccept
+    Timeout = 0
+    ReuseAddress = False
+    Left = 164
+    Top = 328
+  end
+  object IniPropStorage: TIniPropStorage
+    StoredValues = <>
+    IniFileName = 'config.ini'
+    IniSection = 'Modbus'
+    OnSaveProperties = IniPropStorageSaveProperties
+    OnRestoreProperties = IniPropStorageRestoreProperties
+    Left = 216
+    Top = 384
+  end
+end

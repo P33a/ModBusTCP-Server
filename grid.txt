@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <grid version="3">
+    <saveoptions create="False" position="False" content="True"/>
+    <content>
+      <cells cellcount="9">
+        <cell1 column="0" row="0" text="Name"/>
+        <cell2 column="0" row="1" text="Go"/>
+        <cell3 column="0" row="2" text="Ready"/>
+        <cell4 column="0" row="3" text="P3"/>
+        <cell5 column="1" row="0" text="Value"/>
+        <cell6 column="1" row="1" text="0"/>
+        <cell7 column="1" row="2" text="1"/>
+        <cell8 column="1" row="3" text="3"/>
+        <cell9 column="2" row="0" text="Set"/>
+      </cells>
+    </content>
+  </grid>
+</CONFIG>
