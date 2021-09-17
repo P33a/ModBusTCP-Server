@@ -771,6 +771,7 @@ object FModBus: TFModBus
     RowCount = 32
     ScrollBars = ssNone
     TabOrder = 11
+    OnValidateEntry = SGRegistersValidateEntry
     ColWidths = (
       60
       61

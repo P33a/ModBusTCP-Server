@@ -141,6 +141,8 @@ type
     procedure IniPropStorageSaveProperties(Sender: TObject);
     procedure LabelInBitDblClick(Sender: TObject);
     procedure LabelOutBitDblClick(Sender: TObject);
+    procedure SGRegistersValidateEntry(sender: TObject; aCol, aRow: Integer;
+      const OldValue: string; var NewValue: String);
     procedure ShapeInputMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure ShapeOutputMouseDown(Sender: TObject; Button: TMouseButton;
@@ -235,6 +237,17 @@ begin
   BModbusOffsetSetClick(Sender);
 end;
 
+procedure TFModBus.SGRegistersValidateEntry(sender: TObject; aCol,
+  aRow: Integer; const OldValue: string; var NewValue: String);
+var idx: integer;
+begin
+  if NewValue <> OldValue then begin
+    idx := ModBusRegistersOffset + aRow - 1;
+    ModbusData.setHoldingRegister(idx, StrToInt(NewValue));
+  end;
+  ModbusRefreshRegisters();
+end;
+
 procedure TFModBus.ShapeInputMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var LED: TShape;
@@ -248,7 +261,6 @@ begin
   ModbusData.SetInput(index, not ModbusData.getInput(index));
 
   ModbusRefreshLEDs();
-  ModbusRefreshRegisters();
 end;
 
 procedure TFModBus.ShapeOutputMouseDown(Sender: TObject; Button: TMouseButton;
@@ -264,7 +276,6 @@ begin
   ModbusData.SetCoil(index, not ModbusData.getCoil(index));
 
   ModbusRefreshLEDs();
-  ModbusRefreshRegisters();
 end;
 
 procedure TFModBus.TCPModBusAccept(aSocket: TLSocket);
